@@ -1,4 +1,4 @@
-##(2) Versioning Control with Git
+##(3) Versioning Control with Git
 
 ###Points learned
 *Git adalah salah satu version control system yang paling sering digunakan developer untuk collab terutama mengenai kode.
