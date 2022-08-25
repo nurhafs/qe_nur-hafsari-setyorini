@@ -1,7 +1,9 @@
 ## (4) Software Testing as a Career Path
 
 ### Points learned
+
 Software testing is a process to determine whether system/program meets the specified requirements and produce desired results. Penyimpangan biasa disebut bugs
+
 ---
 Things software tester do:
 * understand requirement documents
@@ -15,6 +17,7 @@ Technical (basic of unix/linux commands, knoewledge on test management, tracking
 Non-Technical (analytical, communication, time management & organization, great attitude, and passion)
 
 manual and automation testing methods go hand-in-hand for successful testing
+
 ---
 Path to become a software tester:
 Pahami
