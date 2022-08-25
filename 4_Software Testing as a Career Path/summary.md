@@ -1,6 +1,6 @@
-##(4) Software Testing as a Career Path
+## (4) Software Testing as a Career Path
 
-###Points learned
+### Points learned
 Software testing is a process to determine whether system/program meets the specified requirements and produce desired results. Penyimpangan biasa disebut bugs
 ---
 Things software tester do:
