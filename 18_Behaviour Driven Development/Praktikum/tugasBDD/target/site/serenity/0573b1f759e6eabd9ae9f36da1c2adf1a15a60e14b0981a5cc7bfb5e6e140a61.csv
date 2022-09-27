@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Search Job","Search with valid keyword","SUCCESS","2022-09-27T19:48:26.0961515+07:00[Asia/Jakarta]","0.0","0.05"
+"Search Job","Search with invalid keyword","SUCCESS","2022-09-27T19:48:26.1569868+07:00[Asia/Jakarta]","0.0","0.06"
+"Search Job","Click tags","SUCCESS","2022-09-27T19:48:26.2327826+07:00[Asia/Jakarta]","0.0","0.05"
+"Search Job","Search with specific tags","SUCCESS","2022-09-27T19:48:26.2876364+07:00[Asia/Jakarta]","0.0","0.05"

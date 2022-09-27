@@ -1,2 +1,5 @@
+starter\stepdefinitions\Invitation\InvitationSteps.class
 starter\stepdefinitions\Post\CreatePostSteps.class
 starter\stepdefinitions\CucumberTestSuite.class
+starter\stepdefinitions\Login\LoginSteps.class
+starter\stepdefinitions\SearchJobs\SearchJobSteps.class
