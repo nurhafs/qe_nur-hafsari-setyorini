@@ -1,11 +1,10 @@
 ## (19) RESTful API Testing with Rest Assured
 
 ### Points learned
-1. Konsep API:
-	* Mobile app menyampaikan request pada API
-	* API menyalurkan request tsb pada Application
-	* Application memberikan response dari request pada API
-	* API menyalurkan response dari Application pada Mobile App
+1. Fundamental API Integration:
+	Mobile App -> API Server -> Ext Process -> API Testing
+   Test Process:
+	Record & Defining -> Parsing / Filter / Record then Extract -> Reconstruction API calls & simulate client -> Test Validation
 
 2. The Practical Test Pyramid:
 	* UI -> pengujian interaksi melalui UI app
@@ -14,4 +13,10 @@
 	* Unit -> menguji testable terkecil dari app melalui method
    Tingkatan terbawah adalah unit dan tertinggi adalah UI
 
-3. Untuk cara pengerjaannya mirip dengan materi sebelumnya, namun kali ini ditambahkan package baru setingkat dengan stepdefinitions dimana kita bisa memasukkan URL dari API yang akan kita uji beserta method test case.
+3. Salah satu API Automation Tools yang sering digunakan adalah Katalon. Dikembangkan berdasarkan Selenium, Katalon memiliki beberapa keunggulan yaitu sebagai berikut:
+	* Simple Deployment
+	* Quick & Easy Setup
+	* Faster & Better Result
+	* Flexible Modes
+	* Ease of Use
+	* Multi OS Application
