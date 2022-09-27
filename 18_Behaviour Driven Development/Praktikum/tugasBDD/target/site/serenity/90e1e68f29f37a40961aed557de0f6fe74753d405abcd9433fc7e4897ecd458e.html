@@ -22,19 +22,31 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css"><!-- JQuery -->
-<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<!--[if IE 7]>
+<!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
+
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/v4-shims.min.css">
+
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" type="text/css" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.css">
+<link rel="stylesheet" type="text/css" href="chartist/dist/chartist.min.css">
+<script src="chartist/dist/chartist.min.js"></script>
+<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
+<!-- Required Stylesheets -->
 <link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
 
 <!-- Required Javascript -->
 <script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
-<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
-<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
-<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
+<link type="text/css" href="datatables/1.10.19/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.19/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.19/time-elapsed-dhms.js"></script>
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="datatables/1.10.19/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.19/datatables.bootstrap4.min.css" rel="stylesheet" />
 
 <script>
     jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
@@ -58,25 +70,18 @@
 </script>
 <link rel="stylesheet" href="css/core.css"/>
 <link rel="stylesheet" href="css/link.css"/>
-<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
-<!--CHART.JS-->
-<script src="chartjs/chart.js"></script>
-<script src="chartjs/chartjs-plugin-datalabels@2.0.0"></script>
-<script src="chartjs/patternomaly.min.js"></script>
-<script>
-    // Register the plugin to all charts:
-    Chart.register(ChartDataLabels);
-</script>
-<!-- JQuery-UI -->
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
 <link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
 <script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
-<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
-<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
-<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
+<link type="text/css" href="datatables/1.10.19/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.19/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.19/time-elapsed-dhms.js"></script>
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="datatables/1.10.19/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.19/datatables.bootstrap4.min.css" rel="stylesheet" />
 
 <script>
     jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
@@ -98,7 +103,6 @@
         };
     };
 </script>
-
 
 
 
@@ -130,12 +134,12 @@
             });
 
             $('#evidence-table').DataTable(
-                {
-                    searching: false,
-                    ordering: false,
-                    paging: false,
-                    info: false
-                }
+                    {
+                        searching: false,
+                        ordering: false,
+                        paging: false,
+                        info: false
+                    }
             );
 
 
@@ -144,16 +148,15 @@
             $("#requirements-tabs").tabs();
             $("#test-tabs").tabs();
 
-            var requirementsTree = [];
+            var requirementsTree = [{"text":"Create new post","type":"feature","href":"90e1e68f29f37a40961aed557de0f6fe74753d405abcd9433fc7e4897ecd458e.html","nodes":[],"selectable":false,"tags":["","\u003cspan class\u003d\u0027feature-count\u0027\u003e5 scenarios\u003c/span\u003e"]}];
 
             $('#tree').treeview({
                 data: requirementsTree,
                 enableLinks: true,
-                levels: 10,
                 showTags: true,
-                expandIcon: "bi bi-journal-plus",
-                collapseIcon: "bi bi-journal-minus",
-                emptyIcon: "bi bi-journal"
+                expandIcon: "glyphicon glyphicon-folder-close",
+                collapseIcon: "glyphicon glyphicon-folder-open",
+                emptyIcon: "glyphicon glyphicon-book"
             });
 
         });
@@ -170,14 +173,13 @@
     </script>
 </head>
 
-
 <body class="results-page">
 <div id="topheader">
     <div id="topbanner">
         <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
         <div id="projectname-banner" style="float:right">
             <span class="projectname">
-                <span class="projecttitle">Serenity BDD Report</span>
+                <span class="projecttitle"></span>
                 <span class="projectsubtitle"></span>
             </span>
         </div>
@@ -191,9 +193,10 @@
             <span class="breadcrumbs">
             <a href='index.html'>Home</a> > <a href="capabilities.html">Requirements</a>
 
+                > <a href="7d222955d35c790bb8aa67e452c8f680f8f157ff5e887ee36705740227f0e36f.html">Post</a>
 
 
-                    > <span class="truncate-40">Create New Post</span>
+                > <span class="truncate-40">Create New Post</span>
 
             </span>
         </div>
@@ -206,19 +209,19 @@
 <div>
     <ul class="nav nav-tabs" role="tablist">
         <li >
-            <a href="index.html"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+            <a href="index.html"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
         </li>
         <li >
-            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+            <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
         </li>
         <li >
-            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="bi bi-chat-text"></i> Capabilities</a>
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="fa fa-comments-o"></i> Capabilities</a>
         </li>
         <li class="active">
-            <a href="#"><i class="bi bi-chat-text"></i> Features</a>
+            <a href="#"><i class="fa fa-comments-o"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated </span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 27-09-2022 14:54</span>
     <br style="clear:left"/>
 </div>
 
@@ -227,194 +230,558 @@
     <div id="beforetable"></div>
     <div id="results-dashboard">
         <div class="table">
-            <div class=row">
-                <div class="col-sm-12">
-                    <div>
-                        <div clas="table">
-                            <div class="row">
-
+                <div class=row">
+                    <div class="col-sm-12">
+                        <div>
+                            <div clas="table">
+                                <div class="row">
                                     <div class="col-sm-12">
-                                        <span>
-                                            <h2><i class="bi bi-book"></i> Feature: Create New Post</h2>
+                                    <span>
+                                            <h2><i class="fa fa-book"></i> Feature:  Create New Post</h2>
                                         </span>
-                                    </div>
+                                </div>
+                                </div>
                                 </div>
                             </div>
-                        </div>
                             <div class="requirementNarrativeTitle">
                                 As a user<br />
 I want to write new post<br />
 So people can see my recent updates
                             </div>
 
+                        </div>
                     </div>
-                </div>
 
 
-                <div class="row">
-                    <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12">
 
-                        <!-- Requirements result tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a data-toggle="tab" href="#specs"><i class="bi bi-journal-text"></i> Specifications</a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#results"><i class="bi bi-speedometer"></i> Test Results</a>
-                            </li>
-                        </ul>
+                    <!-- Requirements result tabs -->
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#specs"><i class="fas fa-comments"></i> Specifications</a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#results"><i class="fas fa-tachometer-alt"></i> Test Results</a>
+                        </li>
+                    </ul>
 
-                        <!-- Specifications and Results tabs -->
-                        <div class="card border">
-                            <div class="tab-content" id="pills-tabContent">
-                                <div id="specs" class="tab-pane fade in active">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <h3>Feature Coverage By Scenario</h3>
+                    <!-- Specifications and Results tabs -->
+                    <div class="card border">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div id="specs" class="tab-pane fade in active">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-12">
 
-                                                <!-- REQUIREMENTS PIE CHART -->
+
+                                            <h3>Scenarios</h3>
+
+                                            <div id="toc">
+                                                <table class="table" id="toc-table">
+                                                        <tr>
+                                                            <td style="width:95%;" class="toc-title">
+                                                                <a href="#90058b69a99299f2418d90573a2adbe4f675f022bfc31474b711409bad80f97f" title="View scenario details" >Trigger create post pop-up</a>
+
+
+                                                            </td>
+                                                            <td style="width:5%;">
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="9c1c9ec30cd39b0c9bac46265a566f4d11bc953dbb61096402a71de580389620.html"
+                                                                               title="View test results">
+                                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                                                            </a>
+
+                                                                        
+                                                                        </td>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="9c1c9ec30cd39b0c9bac46265a566f4d11bc953dbb61096402a71de580389620.html"
+                                                                               title="View test results">
+                                                                                <i class="fas fa-search-plus"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width:95%;" class="toc-title">
+                                                                <a href="#60cf0cb3b80bfd1ebd0a0d0bd7526a09724b0735170de66d67f831fc35b39374" title="View scenario details" >Create post with only words</a>
+
+
+                                                            </td>
+                                                            <td style="width:5%;">
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="c6bf9f7b9cafd5a82ac682876395d1b48d0e4ae70b91b50fdf304bffb46529d3.html"
+                                                                               title="View test results">
+                                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                                                            </a>
+
+                                                                        
+                                                                        </td>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="c6bf9f7b9cafd5a82ac682876395d1b48d0e4ae70b91b50fdf304bffb46529d3.html"
+                                                                               title="View test results">
+                                                                                <i class="fas fa-search-plus"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width:95%;" class="toc-title">
+                                                                <a href="#1d7826faebe1c305247fc41d431ea145e722a0d01cb915ac8ed6ae4503b90862" title="View scenario details" >Create post with image</a>
+
+
+                                                            </td>
+                                                            <td style="width:5%;">
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="da62ef455897c1a00e439fb13420bce76e1c5dce0056c9fb84d9934961163c18.html"
+                                                                               title="View test results">
+                                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                                                            </a>
+
+                                                                        
+                                                                        </td>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="da62ef455897c1a00e439fb13420bce76e1c5dce0056c9fb84d9934961163c18.html"
+                                                                               title="View test results">
+                                                                                <i class="fas fa-search-plus"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width:95%;" class="toc-title">
+                                                                <a href="#7431c0f4b8888e2dbfbab55824f4d733ff8212311d24e3e0486b8ef65cbdf2fd" title="View scenario details" >Create post with video</a>
+
+
+                                                            </td>
+                                                            <td style="width:5%;">
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="8b6967c366654ada5776b77a41ed39851e03dffad22679fe74685fc92c15411f.html"
+                                                                               title="View test results">
+                                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                                                            </a>
+
+                                                                        
+                                                                        </td>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="8b6967c366654ada5776b77a41ed39851e03dffad22679fe74685fc92c15411f.html"
+                                                                               title="View test results">
+                                                                                <i class="fas fa-search-plus"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width:95%;" class="toc-title">
+                                                                <a href="#b1223af8184ff0eb6812191b2a4c19b5596d43ca05b33e331be9f5d1571f6d46" title="View scenario details" >Create post with document</a>
+
+
+                                                            </td>
+                                                            <td style="width:5%;">
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="97f0f40ec1ecd2c6ae964d095258ffdb856d91b2726be084678f33ff673fdfd8.html"
+                                                                               title="View test results">
+                                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                                                            </a>
+
+                                                                        
+                                                                        </td>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="97f0f40ec1ecd2c6ae964d095258ffdb856d91b2726be084678f33ff673fdfd8.html"
+                                                                               title="View test results">
+                                                                                <i class="fas fa-search-plus"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                </table>
 
                                             </div>
-                                            <div class="col-sm-8">
-                                                <h3>Requirements Overview</h3>
 
-                                                <div id="tree"></div>
+                                            <h3>Scenario details</h3>
 
-                                            </div>
+                                                <div class="scenario-docs card" id="90058b69a99299f2418d90573a2adbe4f675f022bfc31474b711409bad80f97f">
+                                                    <div class="scenario-docs card-header success" style="min-height:1.5em;">
+                                                        <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="9c1c9ec30cd39b0c9bac46265a566f4d11bc953dbb61096402a71de580389620.html" title="View test results">Trigger create post pop-up</a>
+                                                            </span>
+                                                            <span class="scenario-result-icon">
+                                                                
+
+                                                                    <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="scenario-docs card-body">
+                                                            <p>Given I am logged in</p>
+                                                            <p>And I am in main page</p>
+                                                            <p>When I click write a post</p>
+                                                            <p>Then a write post pop-up is showed</p>
+                                                        <div class="examples">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="scenario-docs card" id="60cf0cb3b80bfd1ebd0a0d0bd7526a09724b0735170de66d67f831fc35b39374">
+                                                    <div class="scenario-docs card-header success" style="min-height:1.5em;">
+                                                        <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="c6bf9f7b9cafd5a82ac682876395d1b48d0e4ae70b91b50fdf304bffb46529d3.html" title="View test results">Create post with only words</a>
+                                                            </span>
+                                                            <span class="scenario-result-icon">
+                                                                
+
+                                                                    <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="scenario-docs card-body">
+                                                            <p>Given I am logged in</p>
+                                                            <p>And I triggered write post pop-up</p>
+                                                            <p>When I fill the text section</p>
+                                                            <p>And I clicked post button</p>
+                                                            <p>Then the post will be published</p>
+                                                        <div class="examples">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="scenario-docs card" id="1d7826faebe1c305247fc41d431ea145e722a0d01cb915ac8ed6ae4503b90862">
+                                                    <div class="scenario-docs card-header success" style="min-height:1.5em;">
+                                                        <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="da62ef455897c1a00e439fb13420bce76e1c5dce0056c9fb84d9934961163c18.html" title="View test results">Create post with image</a>
+                                                            </span>
+                                                            <span class="scenario-result-icon">
+                                                                
+
+                                                                    <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="scenario-docs card-body">
+                                                            <p>Given I am logged in</p>
+                                                            <p>And I triggered write post pop-up</p>
+                                                            <p>When I uploaded image</p>
+                                                            <p>And I clicked post button</p>
+                                                            <p>Then the post will be published</p>
+                                                        <div class="examples">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="scenario-docs card" id="7431c0f4b8888e2dbfbab55824f4d733ff8212311d24e3e0486b8ef65cbdf2fd">
+                                                    <div class="scenario-docs card-header success" style="min-height:1.5em;">
+                                                        <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="8b6967c366654ada5776b77a41ed39851e03dffad22679fe74685fc92c15411f.html" title="View test results">Create post with video</a>
+                                                            </span>
+                                                            <span class="scenario-result-icon">
+                                                                
+
+                                                                    <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="scenario-docs card-body">
+                                                            <p>Given I am logged in</p>
+                                                            <p>And I triggered write post pop-up</p>
+                                                            <p>When I uploaded video</p>
+                                                            <p>And I clicked post button</p>
+                                                            <p>Then the post will be published</p>
+                                                        <div class="examples">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="scenario-docs card" id="b1223af8184ff0eb6812191b2a4c19b5596d43ca05b33e331be9f5d1571f6d46">
+                                                    <div class="scenario-docs card-header success" style="min-height:1.5em;">
+                                                        <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="97f0f40ec1ecd2c6ae964d095258ffdb856d91b2726be084678f33ff673fdfd8.html" title="View test results">Create post with document</a>
+                                                            </span>
+                                                            <span class="scenario-result-icon">
+                                                                
+
+                                                                    <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="scenario-docs card-body">
+                                                            <p>Given I am logged in</p>
+                                                            <p>And I triggered write post pop-up</p>
+                                                            <p>When I uploaded document</p>
+                                                            <p>And I clicked post button</p>
+                                                            <p>Then the post will be published</p>
+                                                        <div class="examples">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div id="results" class="tab-pane fade">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <h3>Feature Coverage By Scenario</h3>
-                                                <!-- TEST RESULT PIE CHART -->
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <h4><i class="bi bi-check-square"></i> Test Outcomes</h4>
-                                                <!-- Severity bar chart -->
-                                                <div class="chart-container" style="position: relative; width:30vw">
-                                                    <canvas id="severityChart" width="300" height="300"></canvas>
-                                                </div>
-                                            </div>
+                            <div id="results" class="tab-pane fade">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-4">
 
-                                            <div class="col-sm-4">
-                                                <h4><i class="bi bi-graph-up"></i> Test Performance</h4>
-
-                                                <!-- Duration bar chart -->
-                                                <div class="chart-container" style="position: relative; width:30vw">
-                                                    <canvas id="durationChart" width="300" height="300"></canvas>
-                                                </div>
+                                            <div style="width:300px;" class="chart-container automated-and-manual-results">
+                                                <div class="ct-chart ct-square"></div>
                                             </div>
+                                            <script>
+
+                                                var labels = ['100%', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+                                                // Our series array that contains series objects or in this case series data arrays
+
+                                                var series = [{meta: 'Passing tests (automated)', value: 5}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 0}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 0}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}];
+
+                                                // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
+                                                // as you saw in the previous example
+                                                var options = {
+                                                    width: 350,
+                                                    height: 300
+                                                };
+
+                                                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                                                    new Chartist.Pie('.ct-chart', {
+                                                        series: series,
+                                                        labels: labels,
+                                                    }, {
+                                                        donut: true,
+                                                        donutWidth: 60,
+                                                        donutSolid: true,
+                                                        startAngle: 270,
+                                                        showLabel: true
+                                                    }, options);
+                                                });
+
+                                            </script>
                                         </div>
+                                        <div class="col-sm-8">
+
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Scenario Results (including rows of test data)</th>
+                                                <th scope="col" colspan="2" class="automated-stats">
+                                                    Automated
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                                    <td class="aggregate-result-count">
+                                                                        <a href="d6bd600e5515e80f95daffe5cb4095edcf248cec1c29db1055952020f108ee80.html"><i
+                                                                                class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing</a>
+                                                                    </td>
+                                                <td class="automated-stats">5</td>
+                                                <td class="automated-stats">100%</td>
+                                            </tr>
+                                            <tr>
+                                                                    <td class="aggregate-result-count"><i
+                                                                            class='fa fa-stop-circle-o pending-icon'></i>&nbsp;Pending
+                                                                    </td>
+                                                <td class="automated-stats">0</td>
+                                                <td class="automated-stats"> </td>
+                                            </tr>
+                                            <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                        class='fa fa-ban ignored-icon'></i>&nbsp;Ignored
+                                                                </td>
+                                                <td class="automated-stats">0</td>
+                                                <td class="automated-stats"> </td>
+                                            </tr>
+                                            <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                        class='fa fa-fast-forward skip-icon'></i>&nbsp;Skipped
+                                                                </td>
+                                                <td class="automated-stats">0</td>
+                                                <td class="automated-stats"> </td>
+                                            </tr>
+                                            <tr>
+                                                                            <td colspan="3"><i
+                                                                                class='fa fa-times failure-icon'></i>&nbsp;<em>Unsuccessful</em></a>
+                                                                            </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-times-circle failure-icon'></i>&nbsp;Failed
+                                                                </td>
+                                                <td class="automated-stats">0</td>
+                                                <td class="automated-stats"> </td>
+                                            <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-exclamation-triangle error-icon'></i>&nbsp;Broken
+                                                                </td>
+                                                <td class="automated-stats">0</td>
+                                                <td class="automated-stats"> </td>
+                                            <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-chain-broken compromised-icon'></i>&nbsp;Compromised
+                                                                </td>
+                                                <td class="automated-stats">0</td>
+                                                <td class="automated-stats"> </td>
+                                            </tr>
+                                            <tr class="summary-stats">
+                                                <td class="aggregate-result-count">Total</td>
+                                                <td class="automated-stats">5</td>
+                                                <td class="automated-stats"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="container-fluid">
+                                    </div>
+
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <h3><i class="bi bi-gear"></i> Automated Tests</h3>
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Execution Time</th>
+                                                        <th>Clock Time</th>
+                                                        <th>Fastest Test</th>
+                                                        <th>Slowest Test</th>
+                                                        <th>Average Execution Time</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>309ms</td>
+                                                        <td>304ms</td>
+                                                        <td>27ms</td>
+                                                        <td>150ms</td>
+                                                        <td>61ms</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
 
-                                                    <table class="scenario-result-table table"
-                                                           id="scenario-results">
-                                                        <thead>
-                                                        <tr>
-                                                                <th>feature</th>
-                                                            <th class="test-name-column">Scenario</th>
-                                                            <th>Steps</th>
-                                                            <th>Started</th>
-                                                            <th>Duration</th>
-                                                            <th>Result</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr class="scenario-result UNDEFINED">
-                                                                    <td>
-                                                                            <a href="4fb409ef351bed683b7334392665bfa84bb77ac691f75c31193bc0c91233cdfe.html">Create new post</a>
-                                                                    </td>
-                                                                <td>
-                                                                        <a href="">Trigger create post pop-up</a>
-                                                                </td>
-                                                                <td>4</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>
-                                                                        <i class='bi bi-pause-circle undefined-icon ' title='No test has been implemented yet'></i> <span
-                                                                            style="display:none">UNDEFINED</span>
-                                                                                                                                    </td>
-                                                            </tr>
-                                                            <tr class="scenario-result UNDEFINED">
-                                                                    <td>
-                                                                            <a href="4fb409ef351bed683b7334392665bfa84bb77ac691f75c31193bc0c91233cdfe.html">Create new post</a>
-                                                                    </td>
-                                                                <td>
-                                                                        <a href="">Create post with only words</a>
-                                                                </td>
-                                                                <td>5</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>
-                                                                        <i class='bi bi-pause-circle undefined-icon ' title='No test has been implemented yet'></i> <span
-                                                                            style="display:none">UNDEFINED</span>
-                                                                                                                                    </td>
-                                                            </tr>
-                                                            <tr class="scenario-result UNDEFINED">
-                                                                    <td>
-                                                                            <a href="4fb409ef351bed683b7334392665bfa84bb77ac691f75c31193bc0c91233cdfe.html">Create new post</a>
-                                                                    </td>
-                                                                <td>
-                                                                        <a href="">Create post with image</a>
-                                                                </td>
-                                                                <td>5</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>
-                                                                        <i class='bi bi-pause-circle undefined-icon ' title='No test has been implemented yet'></i> <span
-                                                                            style="display:none">UNDEFINED</span>
-                                                                                                                                    </td>
-                                                            </tr>
-                                                            <tr class="scenario-result UNDEFINED">
-                                                                    <td>
-                                                                            <a href="4fb409ef351bed683b7334392665bfa84bb77ac691f75c31193bc0c91233cdfe.html">Create new post</a>
-                                                                    </td>
-                                                                <td>
-                                                                        <a href="">Create post with video</a>
-                                                                </td>
-                                                                <td>5</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>
-                                                                        <i class='bi bi-pause-circle undefined-icon ' title='No test has been implemented yet'></i> <span
-                                                                            style="display:none">UNDEFINED</span>
-                                                                                                                                    </td>
-                                                            </tr>
-                                                            <tr class="scenario-result UNDEFINED">
-                                                                    <td>
-                                                                            <a href="4fb409ef351bed683b7334392665bfa84bb77ac691f75c31193bc0c91233cdfe.html">Create new post</a>
-                                                                    </td>
-                                                                <td>
-                                                                        <a href="">Create post with document</a>
-                                                                </td>
-                                                                <td>5</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>
-                                                                        <i class='bi bi-pause-circle undefined-icon ' title='No test has been implemented yet'></i> <span
-                                                                            style="display:none">UNDEFINED</span>
-                                                                                                                                    </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3><i class="fas fa-cogs"></i> Automated Tests</h3>
+
+                                            <table class="scenario-result-table table" id="scenario-results">
+                                                <thead>
+                                                <tr>
+                                                    <th class="test-name-column">Scenario</th>
+                                                    <th>Steps</th>
+                                                    <th>Start Time</th>
+                                                    <th>Duration</th>
+                                                    <th>Result</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="9c1c9ec30cd39b0c9bac46265a566f4d11bc953dbb61096402a71de580389620.html">Trigger create post pop-up</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td>
+                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                                style="display:none">SUCCESS</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="c6bf9f7b9cafd5a82ac682876395d1b48d0e4ae70b91b50fdf304bffb46529d3.html">Create post with only words</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td>
+                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                                style="display:none">SUCCESS</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="da62ef455897c1a00e439fb13420bce76e1c5dce0056c9fb84d9934961163c18.html">Create post with image</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td>
+                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                                style="display:none">SUCCESS</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="8b6967c366654ada5776b77a41ed39851e03dffad22679fe74685fc92c15411f.html">Create post with video</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td>
+                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                                style="display:none">SUCCESS</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="97f0f40ec1ecd2c6ae964d095258ffdb856d91b2726be084678f33ff673fdfd8.html">Create post with document</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td>
+                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                                style="display:none">SUCCESS</span>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
 
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <h3><i class="bi bi-hand-index-thumb"></i> Manual Tests</h3>
+                                                <h3><i class="fas fa-edit"></i> Manual Tests</h3>
 
-                                                    No manual tests were recorded
+                                                No manual tests were recorded
 
                                             </div>
                                         </div>
@@ -427,361 +794,12 @@ So people can see my recent updates
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12">
-                    <span class="version">Serenity BDD version 3.3.4</span>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <span class="version">Serenity BDD version 2.1.2</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<!-- Chart data -->
-    <!-- PIE CHART -->
-    <script>
-
-        // The results pie chart
-        const outcomeChartCtx = document.getElementById('resultChart');
-
-        // Options define for display value on top of bars
-        const outcomeDetailsReports = [
-            { title: 'Passing Scenarios', link: "d6bd600e5515e80f95daffe5cb4095edcf248cec1c29db1055952020f108ee80.html" },
-            { title: 'Pending Scenarios', link: "cd1f6946c02d8c484c9ed23311c0c37fbfe34dedc2ad32dbf334193a159fc8b3.html" },
-            { title: 'Ignored Scenarios', link: "baa84581975c1f7349bee5ab19d97a9d478e22080e493b2d588c4bd584aad7ac.html" },
-            { title: 'Skipped Scenarios', link: "d971ba80e64aafa22dc6a22c344b04da0c919390ecd57fea9229037611f1e69c.html" },
-            { title: 'Aborted Scenarios',  link: "46f5be9d0dac97144add59dffd540e379d2da3569f79b02d01f761b238762d84.html"},
-            { title: 'Failed Scenarios', link: "94e92a9ab8c88d08e6dba4c1fe12592185da97f539d37d601a3c8847a3110ecf.html"  },
-            { title: 'Broken Scenarios', link: "9abc7089bd4dc1156c8b198e8001fb67216e197bfecbb13f18e5cc2d242a81bd.html"    },
-            { title: 'Compromised Scenarios',  link: "e3039a5dccd820729339486af822c914aa793883bab7a96b4aa6c6cdc759c79a.html" },
-        ]
-        const outcomeData = {
-            labels: ['Passing Scenarios', 'Pending Scenarios', 'Ignored Scenarios', 'Skipped Scenarios', 'Aborted Scenarios', 'Failed Scenarios', 'Broken Scenarios', 'Compromised Scenarios','Undefined Scenarios'],
-            datasets: [{
-                label: 'Test Results',
-                fill: false,
-                data: [{meta: 'Passing tests', value: 0}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
-                backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
-                borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
-                borderWidth: 1,
-            }]
-        }
-        const outcomeOptions = {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'bottom'
-                },
-                // Change options for ALL labels of THIS CHART
-                datalabels: {
-                    color: '#444444',
-                    'font.weight': 'bold',
-                    formatter: (value, ctx) => {
-                        let sum = 0;
-                        let dataArr = ctx.chart.data.datasets[0].data;
-                        dataArr.map(data => {
-                            sum += data;
-                        });
-                        let percentage = (value * 100 / sum).toFixed(0) + "%";
-                        if (percentage === '0%' || percentage === 'NaN%') {
-                            return '';
-                        } else {
-                            return percentage;
-                        }
-                    },
-                },
-            }
-        }
-
-        const outcomeChart = new Chart(outcomeChartCtx, {
-            type: 'doughnut',
-            data: outcomeData,
-            options: outcomeOptions,
-            plugins: [
-                {
-                    id: 'text',
-                    beforeDraw: function (chart, a, b) {
-                        var width = chart.width,
-                            height = chart.height,
-                            ctx = chart.ctx;
-
-                        ctx.restore();
-                        var fontSize = (height / 200).toFixed(1);
-                        ctx.font = fontSize + "em sans-serif";
-                        ctx.textBaseline = "middle";
-
-                        var text = " "
-                        textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
-                        textY = (height / 2) - 40;
-
-                        ctx.fillText(text, textX, textY);
-                        ctx.save();
-                    }
-                }]
-        });
-
-        function clickHandler(click) {
-            const points = outcomeChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
-            if (points.length) {
-                const firstPoint = points[0];
-                window.open(outcomeDetailsReports[firstPoint.index].link, "_self")
-
-            }
-        }
-        outcomeChartCtx.onclick = clickHandler;
-    </script>
-    <!-- END PIE CHART -->
-    <!-- PIE CHART -->
-    <script>
-
-        // The results pie chart
-        const requirementsChartCtx = document.getElementById('requirementChart');
-
-        // Options define for display value on top of bars
-        const requirementsOutcomeDetailsReports = [
-            { title: 'Passing Scenarios', link: "d6bd600e5515e80f95daffe5cb4095edcf248cec1c29db1055952020f108ee80.html" },
-            { title: 'Pending Scenarios', link: "cd1f6946c02d8c484c9ed23311c0c37fbfe34dedc2ad32dbf334193a159fc8b3.html" },
-            { title: 'Ignored Scenarios', link: "baa84581975c1f7349bee5ab19d97a9d478e22080e493b2d588c4bd584aad7ac.html" },
-            { title: 'Skipped Scenarios', link: "d971ba80e64aafa22dc6a22c344b04da0c919390ecd57fea9229037611f1e69c.html" },
-            { title: 'Aborted Scenarios',  link: "46f5be9d0dac97144add59dffd540e379d2da3569f79b02d01f761b238762d84.html"},
-            { title: 'Failed Scenarios', link: "94e92a9ab8c88d08e6dba4c1fe12592185da97f539d37d601a3c8847a3110ecf.html"  },
-            { title: 'Broken Scenarios', link: "9abc7089bd4dc1156c8b198e8001fb67216e197bfecbb13f18e5cc2d242a81bd.html"    },
-            { title: 'Compromised Scenarios',  link: "e3039a5dccd820729339486af822c914aa793883bab7a96b4aa6c6cdc759c79a.html" },
-            { title: 'Undefined Scenarios',  link: "" },
-        ]
-        const requirementsOutcomeData = {
-            labels: ['Passing Scenarios', 'Pending Scenarios', 'Ignored Scenarios', 'Skipped Scenarios', 'Aborted Scenarios', 'Failed Scenarios', 'Broken Scenarios', 'Compromised Scenarios','Undefined Scenarios'],
-            datasets: [{
-                label: 'Feature Coverage',
-                fill: false,
-                data: [{meta: 'Passing tests', value: 0}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
-                backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
-                borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
-                borderWidth: 1,
-            }]
-        }
-        const requirementsOutcomeOptions = {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'bottom'
-                },
-                // Change options for ALL labels of THIS CHART
-                datalabels: {
-                    color: '#444444',
-                    'font.weight': 'bold',
-                    formatter: (value, ctx) => {
-                        let sum = 0;
-                        let dataArr = ctx.chart.data.datasets[0].data;
-                        dataArr.map(data => {
-                            sum += data;
-                        });
-                        let percentage = (value * 100 / sum).toFixed(0) + "%";
-                        if (percentage === '0%' || percentage === 'NaN%') {
-                            return '';
-                        } else {
-                            return percentage;
-                        }
-                    },
-                },
-            }
-        }
-
-        const requirementsChart = new Chart(requirementsChartCtx, {
-            type: 'doughnut',
-            data: requirementsOutcomeData,
-            options: requirementsOutcomeOptions,
-            plugins: [
-                {
-                    id: 'text',
-                    beforeDraw: function (chart, a, b) {
-                        var width = chart.width,
-                            height = chart.height,
-                            ctx = chart.ctx;
-
-                        ctx.restore();
-                        var fontSize = (height / 200).toFixed(1);
-                        ctx.font = fontSize + "em sans-serif";
-                        ctx.textBaseline = "middle";
-
-                        var text = " "
-                        textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
-                        textY = (height / 2) - 40;
-
-                        ctx.fillText(text, textX, textY);
-                        ctx.save();
-                    }
-                }]
-        });
-
-        function reqsClickHandler(click) {
-            const points = requirementsChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
-            if (points.length && requirementsOutcomeDetailsReports[firstPoint.index].link) {
-                const firstPoint = points[0];
-                window.open(requirementsOutcomeDetailsReports[firstPoint.index].link, "_self")
-
-            }
-        }
-        requirementsChartCtx.onclick = reqsClickHandler;
-    </script>
-    <!-- END PIE CHART -->
-
-    <!-- SUMMARY BAR CHART -->
-    <script>
-
-        // The Severity bar chart
-        const severityChartCtx = document.getElementById('severityChart');
-
-        // Options define for display value on top of bars
-
-        const severityDetailsReports = [
-            { title: 'Passing Scenarios', link: "d6bd600e5515e80f95daffe5cb4095edcf248cec1c29db1055952020f108ee80.html" },
-            { title: 'Pending Scenarios', link: "cd1f6946c02d8c484c9ed23311c0c37fbfe34dedc2ad32dbf334193a159fc8b3.html" },
-            { title: 'Ignored Scenarios', link: "baa84581975c1f7349bee5ab19d97a9d478e22080e493b2d588c4bd584aad7ac.html" },
-            { title: 'Skipped Scenarios', link: "d971ba80e64aafa22dc6a22c344b04da0c919390ecd57fea9229037611f1e69c.html" },
-            { title: 'Aborted Scenarios',  link: "46f5be9d0dac97144add59dffd540e379d2da3569f79b02d01f761b238762d84.html"},
-            { title: 'Failed Scenarios', link: "94e92a9ab8c88d08e6dba4c1fe12592185da97f539d37d601a3c8847a3110ecf.html"  },
-            { title: 'Broken Scenarios', link: "9abc7089bd4dc1156c8b198e8001fb67216e197bfecbb13f18e5cc2d242a81bd.html"    },
-            { title: 'Compromised Scenarios',  link: "e3039a5dccd820729339486af822c914aa793883bab7a96b4aa6c6cdc759c79a.html" },
-        ]
-        const severityData = {
-            labels: ['Passing', 'Pending', 'Ignored', 'Skipped', 'Aborted', 'Failed', 'Broken', 'Compromised'],
-            datasets: [
-                {
-                    label: 'Automated',
-                    data: [0,0,0,0,0,0,0,0],
-                    backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
-                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
-                    borderWidth: 1
-                },
-                {
-                    label: 'Manual',
-                    data: [0,0,0,0,0,0,0,0],
-                    backgroundColor: ['rgba(153,204,51,0.25)','rgba(165, 199, 238, 0.25)','rgba(168, 168, 168, 0.25)','rgba(238, 224, 152, 0.375)','rgba(255, 153, 102, 0.25)','rgba(255, 22, 49, 0.25)','rgba(255, 97, 8, 0.25)','rgba(255, 104, 255, 0.25)','rgba(83, 50, 168, 0.25)'],
-                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
-                    borderWidth: 1
-                },
-
-            ]
-        }
-        const severityOptions = {
-            responsive: true,
-            skipNull: true,
-            scales: {
-                x: {
-                    stacked: true,
-                },
-                y: {
-                    stacked: true,
-                }
-            },
-            plugins: {
-                // Change options for ALL labels of THIS CHART
-                datalabels: {
-                    color: '#444444',
-                    'font.weight': 'bold',
-                    formatter: (value, ctx) => {
-                        if (value === 0) {
-                            return '';
-                        } else {
-                            return value;
-                        }
-                    },
-                }
-            }
-        }
-        const severityChart = new Chart(severityChartCtx, {
-            type: 'bar',
-            data: severityData,
-            options: severityOptions
-        });
-
-        function clickHandler(click) {
-            const points = severityChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
-            if (points.length) {
-                const firstPoint = points[0];
-                window.open(severityDetailsReports[firstPoint.index].link, "_self")
-
-            }
-        }
-        severityChartCtx.onclick = clickHandler;
-    </script>
-    <!-- END SUMMARY CHART -->
-
-    <!-- DURATION CHART -->
-    <script>
-
-        // Options define for display value on top of bars
-        const durationDetailsReports = [
-                {title: "Under 1 second", link: "a3db4aaf0477020d8ca728d4d63943b5268aa69e296cab055692ebd28f34fcc3.html"},
-                {title: "1 to 10 seconds", link: "78a98c20c51fd6d80f48fe29cac8b1ae894439abbd7948154586c0a79271d4d8.html"},
-                {title: "10 to 30 seconds", link: "a33918d2b549e1f3b9257741165372c2f555a671f446102df10751c581b312e2.html"},
-                {title: "30 to 60 seconds", link: "5555cadb9c3c2fbb32d0c4e93799273051ea7a978ee128e6cd689609b4e6d6a9.html"},
-                {title: "1 to 2 minutes", link: "330a7eee8f505230a0b71c5240e495cd938751d31066e41d575a6270cc30b3bd.html"},
-                {title: "2 to 5 minutes", link: "8fb82c6f8d32d34fcdffba83d550444eadc3234dcc49a11c177a1d8faf0a54f5.html"},
-                {title: "5 to 10 minutes", link: "e520328eb95568a34eb595a5846305168539341c1e055537e59c1ab63880ee3f.html"},
-                {title: "10 minutes or over", link: "ac5b87761cd00d73843e908676085f5edab677fccbf43293d66ac0a9bd21a172.html"},
-        ]
-        // The Severity bar chart
-        const durationChartCtx = document.getElementById('durationChart');
-
-        // Options define for display value on top of bars
-
-        const durationData = {
-            labels: ['Under 1 second','1 to 10 seconds','10 to 30 seconds','30 to 60 seconds','1 to 2 minutes','2 to 5 minutes','5 to 10 minutes','10 minutes or over'],
-            datasets: [{
-                label: 'Number of tests per duration',
-                fill: false,
-                data: ['0','0','0','0','0','0','0','0'],
-                backgroundColor: 'rgba(83, 146, 255,0.5)',
-                borderColor: 'rgba(83, 146, 255, 1)',
-            }]
-        }
-        const durationOptions = {
-            responsive: true,
-            plugins: {
-                // Change options for ALL labels of THIS CHART
-                datalabels: {
-                    color: '#444444',
-                    'font.weight': 'bold',
-                    formatter: (value, ctx) => {
-                        if (value > 0) {
-                            return value;
-                        } else {
-                            return '';
-                        }
-                    },
-                },
-                tooltip: {
-                    enabled: true,
-                    usePointStyle: true,
-                    callbacks: {
-                        label: (data) => {
-                            return data.parsed.y + ' tests'
-                        }
-                    },
-                },
-            },
-        }
-
-        const durationChart = new Chart(durationChartCtx, {
-            type: 'bar',
-            data: durationData,
-            options: durationOptions
-        });
-
-        function durationClickHandler(click) {
-            const points = durationChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
-            if (points.length) {
-                const firstPoint = points[0];
-                window.open(durationDetailsReports[firstPoint.index].link, "_self")
-
-            }
-        }
-
-        durationChartCtx.onclick = durationClickHandler;
-    </script>
-    <!-- END DURATION CHART -->
 </body>
 </html>
