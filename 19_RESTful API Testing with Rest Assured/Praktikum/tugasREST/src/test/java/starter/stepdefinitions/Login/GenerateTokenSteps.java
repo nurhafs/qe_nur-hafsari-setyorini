@@ -10,9 +10,10 @@ public class GenerateTokenSteps {
     @Steps
     GenerateToken generateToken;
 
-    @Given("I set generate token url")
+    @Given("I set generate token url with authorization")
     public void iSetUrl() {
         generateToken.setUrl();
+        generateToken.setValidToken();
     }
     @Then("I get token")
     public void iGetToken() {

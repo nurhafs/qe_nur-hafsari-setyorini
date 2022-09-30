@@ -6,15 +6,16 @@ import static net.serenitybdd.rest.SerenityRest.*;
 import static org.hamcrest.Matchers.equalTo;
 
 public class AddUser {
-    private String url;
+    private String url, token;
 
-    public void setUrl() {
+    public void setUrlAndValidToken() {
         url="https://demoqa.com/Account/v1/User";
+        token = "Basic " + "Z2Y6S0hBODkzMHV0OTsnOyc7JztfXyErZGY=";
     }
 
     public JSONObject validUsernameAndPassword() {
         JSONObject body = new JSONObject();
-        body.put("userName", "constantchange");
+        body.put("userName", "orz");
         body.put("password", "AkjHg2397><.,fe!");
         return body;
     }

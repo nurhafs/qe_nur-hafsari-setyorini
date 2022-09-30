@@ -11,9 +11,9 @@ public class AddUserSteps {
     @Steps
     AddUser addUser;
 
-    @Given("I set add user url")
+    @Given("I set add user url and valid token")
     public void iSetUrl() {
-        addUser.setUrl();
+        addUser.setUrlAndValidToken();
     }
 
 

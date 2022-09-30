@@ -8,10 +8,14 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
 
 public class GenerateToken {
-    private String url;
+    private String url, token;
 
     public void setUrl() {
         url="https://demoqa.com/Account/v1/GenerateToken";
+    }
+
+    public void setValidToken() {
+        token = "Basic " + "Z2Y6S0hBODkzMHV0OTsnOyc7JztfXyErZGY=";
     }
 
     public JSONObject registeredAccount() {
@@ -31,6 +35,8 @@ public class GenerateToken {
     public void requestWithRegisteredAccount() {
         given().header("Content-Type", "application/json")
                 .header("accept", "application/json")
+                .header("Authorization", "piplup")
+                .header("authorization", token)
                 .body(registeredAccount().toJSONString());
         when().post(url);
     }
@@ -38,7 +44,16 @@ public class GenerateToken {
     public void requestWithUnregisteredAccount() {
         given().header("Content-Type", "application/json")
                 .header("accept", "application/json")
+                .header("Authorization", "piplup")
+                .header("authorization", token)
                 .body(unregisteredAccount().toJSONString());
+        when().post(url);
+    }
+
+    public void requestWithoutAuthorization() {
+        given().header("Content-Type", "application/json")
+                .header("accept", "application/json")
+                .body(registeredAccount().toJSONString());
         when().post(url);
     }
     public void verifyGetToken() {
@@ -56,5 +71,9 @@ public class GenerateToken {
         then().body("expires", nullValue());
         then().body("status", equalTo("Failed"));
         then().body("result", equalTo("User authorization failed."));
+    }
+
+    public void verifyBanned() {
+        then().statusCode(406);
     }
 }
