@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Generate Token","Generate token with registered username and password","SUCCESS","2022-09-30T11:34:30.7246645+07:00[Asia/Jakarta]","0.0","7.64"
+"Generate Token","Generate token with unregistered username and password","SUCCESS","2022-09-30T11:34:38.3947515+07:00[Asia/Jakarta]","0.0","1.17"
