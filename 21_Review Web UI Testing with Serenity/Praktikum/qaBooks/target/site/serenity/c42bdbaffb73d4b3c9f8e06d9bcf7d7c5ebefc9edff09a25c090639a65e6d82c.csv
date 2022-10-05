@@ -1,0 +1,7 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Login","Open login page","SUCCESS","2022-10-05T17:29:00.0727597+07:00[Asia/Jakarta]","0.0","18.97"
+"Login","Login with valid username and password","SUCCESS","2022-10-05T17:29:19.9754352+07:00[Asia/Jakarta]","0.0","12.01"
+"Login","Login with invalid username and valid password","SUCCESS","2022-10-05T17:29:32.6935757+07:00[Asia/Jakarta]","0.0","10.63"
+"Login","Login with valid username and invalid password","SUCCESS","2022-10-05T17:29:43.9941486+07:00[Asia/Jakarta]","0.0","10.04"
+"Login","Login with empty username and password","SUCCESS","2022-10-05T17:29:54.7406162+07:00[Asia/Jakarta]","0.0","10.56"
+"Login","Login with valid username and empty password","SUCCESS","2022-10-05T17:30:16.4171393+07:00[Asia/Jakarta]","0.0","11.34"
