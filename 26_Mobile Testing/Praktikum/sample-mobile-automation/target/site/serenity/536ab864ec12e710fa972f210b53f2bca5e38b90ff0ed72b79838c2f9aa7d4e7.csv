@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Add Task","Add Task with title and content","SUCCESS","2022-10-21T22:10:37.2952794+07:00[Asia/Jakarta]","0.0","17.31"
+"Add Task","Add Task with title only","SUCCESS","2022-10-21T22:10:54.6211988+07:00[Asia/Jakarta]","0.0","15.49"
+"Add Task","Add Task with content only","SUCCESS","2022-10-21T22:11:10.1281675+07:00[Asia/Jakarta]","0.0","16.42"
+"Add Task","Add Task with empty title and content","SUCCESS","2022-10-21T22:11:26.5609519+07:00[Asia/Jakarta]","0.0","15.63"

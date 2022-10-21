@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Add Task" skipped="0" tests="4" time="64.85" timestamp="2022-10-21 10:10:37"><testcase name="Add Task with title and content"/><testcase name="Add Task with title only"/><testcase name="Add Task with content only"/><testcase name="Add Task with empty title and content"/></testsuite>

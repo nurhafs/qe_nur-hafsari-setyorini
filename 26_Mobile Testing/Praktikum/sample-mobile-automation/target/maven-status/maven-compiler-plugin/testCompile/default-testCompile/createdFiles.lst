@@ -1,0 +1,4 @@
+com\example\acceptancetests\AcceptanceTestSuite.class
+com\example\hook\AndroidDriverHook.class
+com\example\steps\MathsStepDefinitions.class
+com\example\steps\AddTaskStepDefinitions.class
