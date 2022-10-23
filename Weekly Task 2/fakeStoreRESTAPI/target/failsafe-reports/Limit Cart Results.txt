@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: Limit Cart Results
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 17.609 s <<< FAILURE! - in Limit Cart Results
+Limit Cart Results.Limit results with alphabet  Time elapsed: 3.995 s  <<< ERROR!
+net.serenitybdd.core.exceptions.SerenityManagedException: 
+1 expectation failed.
+Expected status code <400> but was <200>.
+
+

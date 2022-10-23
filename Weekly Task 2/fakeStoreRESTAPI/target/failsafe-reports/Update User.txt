@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: Update User
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 24.326 s <<< FAILURE! - in Update User
+Update User.Update valid id with null data  Time elapsed: 3.27 s  <<< ERROR!
+net.serenitybdd.core.exceptions.SerenityManagedException: 
+1 expectation failed.
+Expected status code <400> but was <200>.
+
+

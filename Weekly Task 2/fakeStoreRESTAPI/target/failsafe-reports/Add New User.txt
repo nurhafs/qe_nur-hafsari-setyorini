@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: Add New User
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 18.19 s <<< FAILURE! - in Add New User
+Add New User.Add new user with null username and password  Time elapsed: 3.476 s  <<< ERROR!
+net.serenitybdd.core.exceptions.SerenityManagedException: 
+1 expectation failed.
+Expected status code <400> but was <200>.
+
+

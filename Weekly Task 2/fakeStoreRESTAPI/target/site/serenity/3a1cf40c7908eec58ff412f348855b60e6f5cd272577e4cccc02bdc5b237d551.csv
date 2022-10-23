@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Update cart","Renew valid id with no data","FAILURE","2022-10-23T11:14:02.0619653+07:00[Asia/Jakarta]","0.0","4.2"
+"Update cart","Renew invalid id with no product","FAILURE","2022-10-23T11:14:09.9012056+07:00[Asia/Jakarta]","0.0","102.83"

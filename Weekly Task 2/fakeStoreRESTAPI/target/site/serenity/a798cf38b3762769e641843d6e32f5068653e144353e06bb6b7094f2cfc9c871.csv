@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Update User","Update valid id with valid data","SUCCESS","2022-10-23T11:13:46.8780865+07:00[Asia/Jakarta]","0.0","11.65"
+"Update User","Update invalid id with valid data","SUCCESS","2022-10-23T11:14:01.8165684+07:00[Asia/Jakarta]","0.0","4.68"
+"Update User","Update invalid id with null data","SUCCESS","2022-10-23T11:14:06.5083539+07:00[Asia/Jakarta]","0.0","3.37"

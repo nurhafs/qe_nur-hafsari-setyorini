@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Add New User","Add new user with null username and password","FAILURE","2022-10-23T11:14:00.2844746+07:00[Asia/Jakarta]","0.0","3.47"
+"Limit User Results","Limit results with alphabet","FAILURE","2022-10-23T11:13:59.3246812+07:00[Asia/Jakarta]","0.0","3.84"
+"Update User","Update valid id with null data","FAILURE","2022-10-23T11:13:58.544184+07:00[Asia/Jakarta]","0.0","3.26"

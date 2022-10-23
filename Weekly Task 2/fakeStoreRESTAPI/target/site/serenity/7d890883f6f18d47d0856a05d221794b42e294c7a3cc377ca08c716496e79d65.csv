@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Get All Carts In Date Range","Get All Carts with Valid Date Range","FAILURE","2022-10-23T11:13:46.9358648+07:00[Asia/Jakarta]","0.0","12.02"
+"Limit Cart Results","Limit results with alphabet","FAILURE","2022-10-23T11:13:59.3062012+07:00[Asia/Jakarta]","0.0","3.86"
+"Update cart","Renew valid id with no data","FAILURE","2022-10-23T11:14:02.0619653+07:00[Asia/Jakarta]","0.0","4.2"
+"Update cart","Renew invalid id with no product","FAILURE","2022-10-23T11:14:09.9012056+07:00[Asia/Jakarta]","0.0","102.83"

@@ -1,0 +1,7 @@
+starter\Cart\Cart.class
+starter\stepdefinitions\Login\LoginSteps.class
+starter\stepdefinitions\User\UserSteps.class
+starter\Login\Login.class
+starter\User\User.class
+starter\CucumberTestSuite.class
+starter\stepdefinitions\Cart\CartSteps.class

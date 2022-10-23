@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: Update cart
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 127.169 s <<< FAILURE! - in Update cart
+Update cart.Renew valid id with no data  Time elapsed: 4.207 s  <<< ERROR!
+net.serenitybdd.core.exceptions.SerenityManagedException: 
+1 expectation failed.
+Expected status code <400> but was <200>.
+
+
+Update cart.Renew invalid id with no product  Time elapsed: 102.843 s  <<< ERROR!
+net.serenitybdd.core.exceptions.SerenityManagedException: 
+1 expectation failed.
+Expected status code <400> but was <524>.
+
+

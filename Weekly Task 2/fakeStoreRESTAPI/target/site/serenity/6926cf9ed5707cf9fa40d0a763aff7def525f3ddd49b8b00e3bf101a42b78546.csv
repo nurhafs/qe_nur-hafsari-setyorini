@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Get A Cart","Get a cart with valid id number","SUCCESS","2022-10-23T11:13:46.9510053+07:00[Asia/Jakarta]","0.0","13.4"
+"Get A Cart","Get a cart with invalid id number","SUCCESS","2022-10-23T11:14:00.3815841+07:00[Asia/Jakarta]","0.0","3.21"

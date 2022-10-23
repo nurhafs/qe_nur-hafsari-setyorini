@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Get A User" skipped="0" tests="2" time="16.69" timestamp="2022-10-23 11:13:46"><testcase name="Get a user with valid id number"/><testcase name="Get a user with invalid id number"/></testsuite>

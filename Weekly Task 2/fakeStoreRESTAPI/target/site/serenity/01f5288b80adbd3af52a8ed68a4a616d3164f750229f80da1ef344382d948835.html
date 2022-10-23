@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Serenity Reports</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!--[if IE 7]>
+<!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
+
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/v4-shims.min.css">
+
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" type="text/css" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.css">
+<link rel="stylesheet" type="text/css" href="chartist/dist/chartist.min.css">
+<script src="chartist/dist/chartist.min.js"></script>
+<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
+<!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+
+
+
+
+    <script class="code" type="text/javascript">$(document).ready(function () {
+
+
+        $('.scenario-result-table').DataTable({
+
+            "order": [[0, "asc",], [3, "asc",]],
+            "pageLength": 25,
+            "language": {
+                searchPlaceholder: "Filter",
+                search: ""
+            }
+        });
+
+        // Results table
+        $('#test-results-table').DataTable({
+            "order": [[0, "asc",], [3, "asc",]],
+            "pageLength": 100,
+            "lengthMenu": [[25, 50, 100, 200, -1], [25, 50, 100, 200, "All"]]
+        });
+
+    })
+    ;
+    </script>
+</head>
+
+<body class="results-page">
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle"></span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+
+
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs"><a href="index.html">Home</a>
+                > <span
+                    class="truncate-60">Passing Tests</span>
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="fa fa-comments-o"></i> Capabilities</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 23-10-2022 11:22</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+    <div id="beforetable"></div>
+    <div id="results-dashboard">
+        <div class="middlb">
+            <div class="table">
+
+                <h2>Passing Tests</h2>
+                <table class='overview'>
+                    <tr>
+                        <td width="375px" valign="top">
+                            <div class="test-count-summary">
+                                <div>
+
+                                32 tests
+                                    across 32 scenarios
+
+                                     |
+                                        <a href="01f5288b80adbd3af52a8ed68a4a616d3164f750229f80da1ef344382d948835.csv" title="Download CSV"> <i class="fa fa-download"
+                                                                                        title="Download CSV"></i></a>
+
+                                    <p class="report-info"><i class="fas fa-info-circle"></i> Note that results include
+                                        data-driven scenarios containing tests ,
+                                        which may also contain results other than tests .</p>
+
+
+
+                                </div>
+                            </div>
+
+                            <div>
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#summary"><i class="fas fa-home"></i> Summary</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#tests"><i class="fas fa-tachometer-alt"></i> Test
+                                            Results</a>
+                                    </li>
+                                </ul>
+
+
+                                <div class="card border">
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div id="summary" class="tab-pane fade in active">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                            <div style="width:300px;"
+                                                                 class="chart-container automated-and-manual-results">
+                                                                <div class="ct-chart ct-square"></div>
+                                                            </div>
+                                                            <script>
+
+                                                                var labels = ['100%', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+                                                                // Our series array that contains series objects or in this case series data arrays
+
+                                                                var series = [{meta: 'Passing tests (automated)', value: 32}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 0}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 0}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}];
+
+                                                                // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
+                                                                // as you saw in the previous example
+                                                                var options = {
+                                                                    width: 350,
+                                                                    height: 300
+                                                                };
+
+
+                                                                new Chartist.Pie('.ct-chart', {
+                                                                    series: series,
+                                                                    labels: labels
+                                                                }, {
+                                                                    plugins: [Chartist.plugins.tooltip()],
+                                                                    donut: true,
+                                                                    donutWidth: 60,
+                                                                    donutSolid: true,
+                                                                    startAngle: 270,
+                                                                    showLabel: true
+                                                                }, options);
+
+
+                                                                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                                                                    new Chartist.Pie('.ct-chart', {
+                                                                        series: series,
+                                                                        labels: labels
+                                                                    }, {
+                                                                        plugins: [Chartist.plugins.tooltip()],
+                                                                        donut: true,
+                                                                        donutWidth: 60,
+                                                                        donutSolid: true,
+                                                                        startAngle: 270,
+                                                                        showLabel: true
+                                                                    }, options);
+                                                                });
+
+
+                                                            </script>
+                                                    </div>
+                                                    <div class="col-sm-8">
+
+                                                        <table class="table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope="col">Scenarios</th>
+                                                                <th scope="col" colspan="2" class="automated-stats">
+                                                                    Automated
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                    <td class="aggregate-result-count">
+                                                                        <a href="01f5288b80adbd3af52a8ed68a4a616d3164f750229f80da1ef344382d948835.html"><i
+                                                                                class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing</a>
+                                                                    </td>
+                                                                <td class="automated-stats">32</td>
+                                                                <td class="automated-stats">100%</td>
+                                                            </tr>
+                                                            <tr>
+                                                                    <td class="aggregate-result-count"><i
+                                                                            class='fa fa-stop-circle-o pending-icon'></i>&nbsp;Pending
+                                                                    </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                        class='fa fa-ban ignored-icon'></i>&nbsp;Ignored
+                                                                </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                        class='fa fa-fast-forward skip-icon'></i>&nbsp;Skipped
+                                                                </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                            <td colspan="3"><i
+                                                                                class='fa fa-times failure-icon'></i>&nbsp;<em>Unsuccessful</em></a>
+                                                                            </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-times-circle failure-icon'></i>&nbsp;Failed
+                                                                </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-exclamation-triangle error-icon'></i>&nbsp;Broken
+                                                                </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-chain-broken compromised-icon'></i>&nbsp;Compromised
+                                                                </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            </tr>
+                                                            <tr class="summary-stats">
+                                                                <td class="aggregate-result-count">Total</td>
+                                                                <td class="automated-stats">32</td>
+                                                                <td class="automated-stats"></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div id="tests" class="tab-pane fade">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h3><i class="fas fa-cogs"></i> Automated Tests</h3>
+
+                                            <table class="scenario-result-table table" id="scenario-results">
+                                                <thead>
+                                                <tr>
+                                                    <th>feature</th>
+                                                    <th class="test-name-column">Scenario</th>
+                                                    <th>Steps</th>
+                                                    <th>Started</th>
+                                                    <th>Duration</th>
+                                                    <th>Result</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="c4832439992edc1afdae929726121d4e1b03017fb7355dc4cbf9183e134df530.html">Create New Cart</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="0c1770383974308bd4af9e52c57c1b4777ca9d7c0e4b9edd22e8a78f0f445480.html">Create new cart with products</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>13s 346ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="c4832439992edc1afdae929726121d4e1b03017fb7355dc4cbf9183e134df530.html">Create New Cart</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="df82b2fed7ae4adec25576892629511d657882477c628cbcd04bcec1dfcd1ae2.html">Create new cart with no product</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:14:00</td>
+                                                    <td>3s 514ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="c4832439992edc1afdae929726121d4e1b03017fb7355dc4cbf9183e134df530.html">Create New Cart</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="b1a2b5761871468e312eb0d7840795fb43120ece9c699b2f8b806f9c55e44fcb.html">Create new cart with no data</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>11:14:03</td>
+                                                    <td>4s 118ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="62f05a4df7dfab4994c8f3f7a5e35565c4ff3997fcb98c71c5899635f6987ff0.html">Delete Cart</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="9ec3ea572c12b3116a2cbed2781081273e466d4bd8a216440aba942f6648203d.html">Delete cart with valid id</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>12s 433ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="62f05a4df7dfab4994c8f3f7a5e35565c4ff3997fcb98c71c5899635f6987ff0.html">Delete Cart</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="c90b7d0ac0fd07bc67155264d7c6adc52f8b55faceabb5a816f7dfeced6b9705.html">Get a cart with invalid id number</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:59</td>
+                                                    <td>3s 560ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="02c1ad67381e63c4b595e247ae79221b687d40e415a71dded112fbe0194b085d.html">Get A Cart</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="2e73895c8caed7c8bd1b9e37e581000308bc3da7488975f0a0c0da1da43a3be7.html">Get a cart with valid id number</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>13s 403ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="02c1ad67381e63c4b595e247ae79221b687d40e415a71dded112fbe0194b085d.html">Get A Cart</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="bf5129a603fa518bd218331af7e860cdb29f551b2cbbc788933700551c99f033.html">Get a cart with invalid id number</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:14:00</td>
+                                                    <td>3s 207ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="221bf9369bd5fa5d3ab382c4edb064927e62f2b9c6eef24bd05241bc43e517d1.html">Get All Carts</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="0699034b69c3bafdaf083fdf02807b71625ea86861edeecfa7ca9716cef7ff8f.html">Get All Carts</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>11:13:46</td>
+                                                    <td>12s 678ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="38686f6d92a74bc4944ce710dd8f5e5cb81d54dd491cdd1116345f624031b63a.html">Get All Carts In Date Range</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="86c6c0c3689dafaec8f62ba18b251064587cf876ad60a9e957dc5a4bb743b653.html">Get All Carts with Invalid Date Range</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:59</td>
+                                                    <td>3s 529ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="296d59a7ce425900fdb71c39e81058207a8bb20295c87fac91536b2a8a385ab9.html">Limit Cart Results</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="d81367435e6f2db84bb3609aeb720850c61c45f629ad4d46186bf629913707a4.html">Limit results with number</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>12s 392ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="e36fbc81f338390cb756e39ab62ae5f872dd8226cc747e0e1518583a7d4de28e.html">Sort Cart Result</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="54d1f01a16f198fc798d0569621741f125eeab0070cf5c126d33150006d39a71.html">Sort cart Descending</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>12s 388ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="e36fbc81f338390cb756e39ab62ae5f872dd8226cc747e0e1518583a7d4de28e.html">Sort Cart Result</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="eb67f366da9c49c45263bda70b74c9082edbb6044bc1b7eb90e64cb31e5ae3c0.html">Sort cart Ascending</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:59</td>
+                                                    <td>3s 888ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="f3b08b54ce5e9bd19b0435225946d0d08917f741381577617964b0b211bc79a3.html">Update cart</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="d4e2295f9db52e34da8e2adb5da0995658c94676d8f318baaa69d44f297948dd.html">Renew valid id with product</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>11s 981ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="f3b08b54ce5e9bd19b0435225946d0d08917f741381577617964b0b211bc79a3.html">Update cart</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="42d5410a33828a8c8cf52bbd331389e644791ce6ed691bcdee6e92720f545eb3.html">Renew valid id with no product</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:58</td>
+                                                    <td>3s 396ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="f3b08b54ce5e9bd19b0435225946d0d08917f741381577617964b0b211bc79a3.html">Update cart</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="8c913c9e29eefa2cb7b72c9ef1df9e25d5e5b26af632d265ad3bd9271e198a32.html">Renew invalid id with product</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:14:06</td>
+                                                    <td>3s 597ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="83f6679d20705c4d2fe60d958c7694f289478bda7a9f3a9ac9cbf7ba86966dfb.html">Login</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="f1fb2ce0d511a3cc45856fc3ca0e674450db41a889da404da09c1461867a55d3.html">Login with valid username and valid password</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>1m 51s</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="83f6679d20705c4d2fe60d958c7694f289478bda7a9f3a9ac9cbf7ba86966dfb.html">Login</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="2debcf9cffba0b0299ec10983991ca5678fbd4a6d1b4e5a1790fed3d2da4f00e.html">Login with valid username and invalid password</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:15:38</td>
+                                                    <td>1m 43s</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="83f6679d20705c4d2fe60d958c7694f289478bda7a9f3a9ac9cbf7ba86966dfb.html">Login</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="7032de188ea9c2ebbd74d8e36ad95e00fb809d165c536702c98f2c9844d678c7.html">Login with valid username and null password</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:17:21</td>
+                                                    <td>1m 43s</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="83f6679d20705c4d2fe60d958c7694f289478bda7a9f3a9ac9cbf7ba86966dfb.html">Login</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="b8a017890112356c0c2b1ed0d41fd0976381c221a88f626ffc2da15edda13793.html">Login with null username and null password</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:19:03</td>
+                                                    <td>1m 45s</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="83f6679d20705c4d2fe60d958c7694f289478bda7a9f3a9ac9cbf7ba86966dfb.html">Login</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="70743f3f022ef0ccad930a1a124355ec3d6b58a034393c075e4bd0642fa0830c.html">Login with invalid username and password</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:20:48</td>
+                                                    <td>1m 43s</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2f0c651569e733cfb7fdbb9176eb87d5cb0de85e77d896ce778fc84d28108bad.html">Add New User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="89f4655e856639d597398a37a1c7deecbcebdb01f6aec7adcea6c803deca7d33.html">Add new user with valid username and password</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>13s 598ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="38ee3f0ef414af0b52db244cb4470aebed84f671cb55afe3b2ff0536c98c9d66.html">Delete User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="3ad67fc1b585c920c2b0fd863744c157ef37921070ac67e2783a88bd1bb51783.html">Delete user with valid id</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>12s 106ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="38ee3f0ef414af0b52db244cb4470aebed84f671cb55afe3b2ff0536c98c9d66.html">Delete User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="6edf5d388a616dc91af1fa176bbf2c9b3597a412ee5e68e4d531d53ce445f2f8.html">Get a user with invalid id number</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:59</td>
+                                                    <td>3s 264ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="4917494919933f2df9b5cddbc4fbc8268caea5a2ba881ebc0be9712e8d5d101d.html">Get A User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="04f0f978d5fb243a337521fb6ed3bc1005ac3880db5a7f1cfc986fee5218ae9d.html">Get a user with valid id number</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>13s 437ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="4917494919933f2df9b5cddbc4fbc8268caea5a2ba881ebc0be9712e8d5d101d.html">Get A User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="45b1af4ffc73e5e37d6319d74e150018364463435a4304f80238310fe9a22eab.html">Get a user with invalid id number</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:14:00</td>
+                                                    <td>3s 248ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="444964ded8f3fcbd2d87f816e36de392c443f7e2512bf73f0189f3c427bff5ee.html">Get All Users</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="dbabf0874dc025ea0b7a6348000b16349b9e911053588e9ed7a138adc5f55e7b.html">Get All Users</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>11:13:46</td>
+                                                    <td>12s 221ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="faca2507b69570c46840faff869fda1e1169332040c34807964528c311cfaa29.html">Limit User Results</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="fc90405146b03379d44ba289b1d86253b30748bf244c5630014ce199816c3180.html">Limit results with number</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>12s 864ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="bd28d1c11b42f32addadc1bf7d3a08b73cfe124ffb33dcc6d70f59a28eb4818b.html">Sort User Result</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="fe60f7a09adca03fe52aadc858059af48ebffcebecc6367188233c0759fea40f.html">Sort User Descending</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>12s 164ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="bd28d1c11b42f32addadc1bf7d3a08b73cfe124ffb33dcc6d70f59a28eb4818b.html">Sort User Result</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="f4164db41d3c9df95b60cce5485e62b93a88b54b11713b3ac101399d2319500f.html">Sort User Ascending</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:59</td>
+                                                    <td>5s 943ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="5c0ac2a7f0930d0af160b9296a10991e51ba8a19b77ba96055e1a59ebc1c3589.html">Update User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="f234b2c1af2248707bb90be597208298ce09ad92f2fe12bfd7cdd49fa2c236d4.html">Update valid id with valid data</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:13:46</td>
+                                                    <td>11s 649ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="5c0ac2a7f0930d0af160b9296a10991e51ba8a19b77ba96055e1a59ebc1c3589.html">Update User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="b29d61a0663b49ae7213fc4c10a11c799fe173bc2eeedee8c896aa98c3c41f0b.html">Update invalid id with valid data</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:14:01</td>
+                                                    <td>4s 679ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="5c0ac2a7f0930d0af160b9296a10991e51ba8a19b77ba96055e1a59ebc1c3589.html">Update User</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="e438a02b81b4e344e79e605b47a2c8a11513a84c5d79b77d6745f3134984a3d0.html">Update invalid id with null data</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>11:14:06</td>
+                                                    <td>3s 374ms</td>
+                                                    <td><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
+                                                            style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h3><i class="fas fa-edit"></i> Manual Tests</h3>
+
+                                                No manual tests were recorded
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                        </td>
+
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="beforefooter"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="version">Serenity BDD version 2.6.0</span>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

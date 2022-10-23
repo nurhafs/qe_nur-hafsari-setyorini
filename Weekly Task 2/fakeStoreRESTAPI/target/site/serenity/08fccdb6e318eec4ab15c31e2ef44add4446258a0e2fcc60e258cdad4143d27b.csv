@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Create New Cart","Create new cart with products","SUCCESS","2022-10-23T11:13:46.9235994+07:00[Asia/Jakarta]","0.0","13.35"
+"Create New Cart","Create new cart with no product","SUCCESS","2022-10-23T11:14:00.2981608+07:00[Asia/Jakarta]","0.0","3.51"
+"Create New Cart","Create new cart with no data","SUCCESS","2022-10-23T11:14:03.8234609+07:00[Asia/Jakarta]","0.0","4.12"

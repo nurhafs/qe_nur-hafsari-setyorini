@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: Get All Carts In Date Range
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 17.332 s <<< FAILURE! - in Get All Carts In Date Range
+Get All Carts In Date Range.Get All Carts with Valid Date Range  Time elapsed: 13.221 s  <<< ERROR!
+net.serenitybdd.core.exceptions.SerenityManagedException: 
+1 expectation failed.
+Expected status code <200> but was <400>.
+
+

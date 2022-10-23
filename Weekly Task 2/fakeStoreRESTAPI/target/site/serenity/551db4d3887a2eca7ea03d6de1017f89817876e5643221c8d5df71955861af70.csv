@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Delete User","Delete user with valid id","SUCCESS","2022-10-23T11:13:46.9660977+07:00[Asia/Jakarta]","0.0","12.11"
+"Delete User","Get a user with invalid id number","SUCCESS","2022-10-23T11:13:59.4773165+07:00[Asia/Jakarta]","0.0","3.26"
